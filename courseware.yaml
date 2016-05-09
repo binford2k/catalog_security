@@ -1,0 +1,13 @@
+---
+:templates: git@github.com:puppetlabs/courseware-templates.git
+:github:
+  :public: binford2k
+  :development: binford2k
+  :repository: catalog_security
+:pdf:
+  :author: Ben Ford
+  :subject: http://binford2k.com
+  :protected: true
+  :watermark: false
+:events: false
+

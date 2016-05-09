@@ -1,0 +1,84 @@
+#preso, .slide {
+  width: 1400px;
+  height: 1024px;
+}
+
+.content {
+  font-family: 'Calibre',Helvetica,Tahoma,Arial,sans-serif;
+  font-size: 1.5em;
+}
+
+.content.cover {
+  font-size: 1em;
+}
+
+.content.cover ul {
+  margin: 4em 23em;
+  list-style: none;
+}
+.content.cover ul a {
+  text-decoration: none;
+}
+
+.slide.end h1 {
+  font-size: 6em;
+  font-weight: bold;
+  color: yellow;
+  text-shadow: 8px 8px #000;
+}
+
+/* Utility classes; no ids allowed */
+.content .float_left  {
+  float: left;
+  margin-right: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.float_right {
+  float: right;
+  margin-left: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Puppet output highlighting */
+.content pre.highlight code.language-puppet_output                   { background-color: black; color: #00ff40; }
+.content pre.highlight code.language-puppet_output span.hljs-info    { color: green;  }
+.content pre.highlight code.language-puppet_output span.hljs-notice  { color: cyan;   }
+.content pre.highlight code.language-puppet_output span.hljs-warning { color: yellow; }
+.content pre.highlight code.language-puppet_output span.hljs-error   { color: red;    }
+
+.results {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+code {
+  padding: 0;
+}
+
+/* Allow us to specify when we want code to wrap */
+.content pre.code_wrap:not(.highlight),
+.content pre.highlight code.code_wrap  {
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.callout {
+  padding: 12px;
+}
+
+#screenblanker {
+  background-image: url('_images/hackerrrr.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 50%;
+}
+
+@media print {
+
+}

@@ -1,0 +1,18 @@
+# showoff stuff
+stats/
+pdf/
+static/
+_notes
+
+# tidiness
+*.swp
+.DS_Store
+
+# ruby stuff
+.ruby-version
+.rake_t_cache
+Gemfile.lock
+
+# temp dir to put temp crap that you want git to ignore
+/stash/
+.vagrant/
