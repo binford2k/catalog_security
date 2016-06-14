@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Catalog_security</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+
+  
+  <link rel="icon" href="file/favicon.ico"/>
+  
+
+  <link rel="stylesheet" type="text/css" href=".//css/highlight/atelier-cave.light.css"  />
+  <link rel="stylesheet" type="text/css" href=".//css/showoff.css" />
+  <link rel="stylesheet" type="text/css" href=".//css/font-awesome-4.4.0/css/font-awesome.min.css">
+
+  <script type="text/javascript" src=".//js/jquery-2.1.4.min.js"></script>
+
+  <script type="text/javascript" src=".//js/jquery.cycle.all.js"></script>
+  <script type="text/javascript" src=".//js/jquery-print.js"></script>
+  <script type="text/javascript" src=".//js/jquery.batchImageLoad.js"></script>
+  <script type="text/javascript" src=".//js/jquery.parsequery.min.js"></script>
+  <script type="text/javascript" src=".//js/jquery.doubletap-0.1.js"></script>
+  <script type="text/javascript" src=".//js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src=".//js/highlight.pack.js"></script>
+
+  <script type="text/javascript" src=".//js/coffee-script.js"></script>
+
+  <script type="text/javascript" src=".//js/showoff.js"></script>
+
+  
+    
+    <link rel="stylesheet" href=".//file/styles.css" type="text/css"/>
+  
+
+  
+    <script type="text/javascript" src=".//file/highlight.puppet_output.js"></script>
+  
+
+  <script type="text/javascript">
+    $(function(){
+      setupPreso(false, './');
+    });
+
+    interactive = false;
+
+    keymap               = {
+  "space": "NEXT",
+  "d": "DEBUG",
+  "up": "PREV",
+  "left": "PREV",
+  "pageup": "PREV",
+  "down": "NEXT",
+  "right": "NEXT",
+  "pagedown": "NEXT",
+  "r": "RELOAD",
+  "c": "CONTENTS",
+  "t": "CONTENTS",
+  "h": "HELP",
+  "/": "HELP",
+  "?": "HELP",
+  "b": "BLANK",
+  ".": "BLANK",
+  "F": "FOOTER",
+  "f": "FOLLOW",
+  "n": "NOTES",
+  "esc": "CLEAR",
+  "p": "PAUSE",
+  "P": "PRESHOW",
+  "x": "EXECUTE",
+  "f5": "EXECUTE",
+  "z": "HELP",
+  "q": "HELP"
+};
+    keycode_dictionary   = {
+  "0": "\\",
+  "8": "backspace",
+  "9": "tab",
+  "12": "num",
+  "13": "enter",
+  "16": "shift",
+  "17": "ctrl",
+  "18": "alt",
+  "19": "pause",
+  "20": "caps",
+  "27": "esc",
+  "32": "space",
+  "33": "pageup",
+  "34": "pagedown",
+  "35": "end",
+  "36": "home",
+  "37": "left",
+  "38": "up",
+  "39": "right",
+  "40": "down",
+  "44": "print",
+  "45": "insert",
+  "46": "delete",
+  "48": "0",
+  "49": "1",
+  "50": "2",
+  "51": "3",
+  "52": "4",
+  "53": "5",
+  "54": "6",
+  "55": "7",
+  "56": "8",
+  "57": "9",
+  "59": ";",
+  "61": "=",
+  "65": "a",
+  "66": "b",
+  "67": "c",
+  "68": "d",
+  "69": "e",
+  "70": "f",
+  "71": "g",
+  "72": "h",
+  "73": "i",
+  "74": "j",
+  "75": "k",
+  "76": "l",
+  "77": "m",
+  "78": "n",
+  "79": "o",
+  "80": "p",
+  "81": "q",
+  "82": "r",
+  "83": "s",
+  "84": "t",
+  "85": "u",
+  "86": "v",
+  "87": "w",
+  "88": "x",
+  "89": "y",
+  "90": "z",
+  "91": "cmd",
+  "92": "cmd",
+  "93": "cmd",
+  "96": "num_0",
+  "97": "num_1",
+  "98": "num_2",
+  "99": "num_3",
+  "100": "num_4",
+  "101": "num_5",
+  "102": "num_6",
+  "103": "num_7",
+  "104": "num_8",
+  "105": "num_9",
+  "106": "num_multiply",
+  "107": "num_add",
+  "108": "num_enter",
+  "109": "num_subtract",
+  "110": "num_decimal",
+  "111": "num_divide",
+  "112": "f1",
+  "113": "f2",
+  "114": "f3",
+  "115": "f4",
+  "116": "f5",
+  "117": "f6",
+  "118": "f7",
+  "119": "f8",
+  "120": "f9",
+  "121": "f10",
+  "122": "f11",
+  "123": "f12",
+  "124": "print",
+  "144": "num",
+  "145": "scroll",
+  "173": "-",
+  "186": ";",
+  "187": "=",
+  "188": ",",
+  "189": "-",
+  "190": ".",
+  "191": "/",
+  "192": "`",
+  "219": "[",
+  "220": "\\",
+  "221": "]",
+  "222": "'",
+  "223": "`",
+  "224": "cmd",
+  "225": "alt",
+  "57392": "ctrl",
+  "63289": "num"
+};
+    keycode_shifted_keys = {
+  "0": ")",
+  "1": "!",
+  "2": "@",
+  "3": "#",
+  "4": "$",
+  "5": "%",
+  "6": "^",
+  "7": "&",
+  "8": "*",
+  "9": "(",
+  "/": "?",
+  ".": ">",
+  ",": "<",
+  "'": "\"",
+  ";": ":",
+  "[": "{",
+  "]": "}",
+  "\\": "|",
+  "`": "~",
+  "=": "+",
+  "-": "_"
+};
+
+  </script>
+
+</head>
+
+<body>
+<div id="questionsIndicator"></div>
+
+<i id="hamburger" class="fa fa-bars fa-2x"></i>
+<div id="sidebarWrapper">
+    <div id="feedbackSidebar" class="sideMenu">
+    <img id="disconnected" src="/css/disconnected.png">
+    <h3>Showoff Menu</h3>
+    <div id="navToggle" class="buttonWrapper"><i class=" fa fa-bookmark"></i> Table of Contents</div>
+    <div id="navigation" class="submenu"></div>
+    
+    <hr>
+
+    
+
+    <div id="closeMenu" class="buttonWrapper"><i class="fa fa-close"></i> Close</div>
+    <hr>
+
+    <small>
+        <p>Press <code>?</code> for help.</p>
+        <p>All features are anonymous</p>
+    </small>
+    </div>
+    <div id="sidebarExit"></div>
+</div>
+<div id="help">
+  <h1>Showoff Hotkeys</h1>
+  <div>
+    <span class="description">Move to the next slide.</span>
+    <span class="action">NEXT</span>
+    <span class="hotkeys"><span class="key">space</span><span class="key">down</span><span class="key">right</span><span class="key">pagedown</span></span>
+  </div>
+  <div>
+    <span class="description">Move to the previous slide.</span>
+    <span class="action">PREV</span>
+    <span class="hotkeys"><span class="key">up</span><span class="key">left</span><span class="key">pageup</span></span>
+  </div>
+  <div>
+    <span class="description">Show the table of contents menu.</span>
+    <span class="action">CONTENTS</span>
+    <span class="hotkeys"><span class="key">c</span><span class="key">t</span></span>
+  </div>
+  <div>
+    <span class="description">Toggle follow mode.</span>
+    <span class="action">FOLLOW</span>
+    <span class="hotkeys"><span class="key">f</span></span>
+  </div>
+  <div>
+    <span class="description">Show this help dialog.</span>
+    <span class="action">HELP</span>
+    <span class="hotkeys"><span class="key">h</span><span class="key">/</span><span class="key">?</span><span class="key">z</span><span class="key">q</span></span>
+  </div>
+
+  <hr />
+
+  <div>
+    <span class="description">Reload all slides.</span>
+    <span class="action">RELOAD</span>
+    <span class="hotkeys"><span class="key">r</span></span>
+  </div>
+  <div>
+    <span class="description">Blank the screen.</span>
+    <span class="action">BLANK</span>
+    <span class="hotkeys"><span class="key">b</span><span class="key">.</span></span>
+  </div>
+  <div>
+    <span class="description">Toggle the display footer.</span>
+    <span class="action">FOOTER</span>
+    <span class="hotkeys"><span class="key">F</span></span>
+  </div>
+  <div>
+    <span class="description">Toggle notes display.</span>
+    <span class="action">NOTES</span>
+    <span class="hotkeys"><span class="key">n</span></span>
+  </div>
+  <div>
+    <span class="description">Clear code execution results.</span>
+    <span class="action">CLEAR</span>
+    <span class="hotkeys"><span class="key">esc</span></span>
+  </div>
+  <div>
+    <span class="description">Pause the presentation.</span>
+    <span class="action">PAUSE</span>
+    <span class="hotkeys"><span class="key">p</span></span>
+  </div>
+  <div>
+    <span class="description">Display slideshow of <tt>preshow</tt> images on a timer.</span>
+    <span class="action">PRESHOW</span>
+    <span class="hotkeys"><span class="key">P</span></span>
+  </div>
+  <div>
+    <span class="description">Execute the first visible code block.</span>
+    <span class="action">EXECUTE</span>
+    <span class="hotkeys"><span class="key">x</span><span class="key">f5</span></span>
+  </div>
+
+  <hr />
+
+  <div>
+    <span class="description">Show debugging information.</span>
+    <span class="action">DEBUG</span>
+    <span class="hotkeys"><span class="key">d</span></span>
+  </div>
+</div>
+
+<div id="preso"><center>loading presentation...</center></div>
+
+<div id="notes"></div>
+
+<footer id="footer">
+  <span id="followMode"></span>
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+  <span id="slideFilename"></span>
+  <img id="disconnected" src=".//css/disconnected.png" />
+</footer>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div id="Overview_title" class="slide center cover" data-transition="none">
+<div class="content center cover" ref="Overview/title">
+<h1>Puppet Catalog Security</h1>
+<p><img src="./file//_images/hackerrrr.jpg" alt="Hackerrrr"></p>
+<h2>-- or --</h2>
+<h2>The night in which I crushed all your hopes and dreams</h2>
+<ul>
+<li><a href="http://www.twitter.com/binford2k" target="_blank">@binford2k</a></li>
+<li><a href="http://binford2k.com" target="_blank">binford2k.com</a></li>
+</ul>
+<div class="notes-section notes"><p>
+Gratuitous scary hackerrrrr just because. Everyone's got to have this
+oh-so-accurate graphical depiction of security vulnerabilities, right?
+</p></div>
+<div class="notes-section handouts"><p>
+Everyone's got to have this oh-so-accurate graphical depiction of security
+vulnerabilities, right?
+</p></div>
+</div>
+</div>
+<div id="Overview_intro" class="slide " data-transition="none">
+<div class="content " ref="Overview/intro">
+<h1>What we're going to talk about</h1>
+<ol>
+<li>The secrets you didn't know were in your catalog.</li>
+<li>Why that's mostly OK.</li>
+<li>How to scrub the catalog from your nodes.</li>
+<li>Keeping secrets out of your catalog in the first place.</li>
+<li>Storing secrets in your codebase.</li>
+</ol>
+<p><img src="./file//_images/we-all-have-secrets.jpg" alt="We all have secrets"></p>
+</div>
+</div>
+<div id="Overview_puppet" class="slide " data-transition="none">
+<div class="content " ref="Overview/puppet">
+<h1>What does Puppet do anyway?</h1>
+<ul>
+<li>Puppet manages configuration of your infrastructure.</li>
+<li>Tell Puppet what you want a node to be and... <em>poof!</em>
+</li>
+</ul>
+<p><img src="./file//_images/fairy_godmother.jpg" alt="Fairy Godmother"></p>
+<div class="notes-section notes"><p>
+You all know this because you're here, but bear with me a moment.
+</p></div>
+<div class="notes-section handouts"><p>
+You all know this because you're here, but bear with me a moment.
+</p></div>
+</div>
+</div>
+<div id="Overview_configuration" class="slide " data-transition="none">
+<div class="content " ref="Overview/configuration">
+<h1>Configuration Management</h1>
+<ul>
+<li>Define a configuration and Puppet will enforce it.</li>
+<li>Schlupping around config files or such to all nodes.</li>
+</ul>
+
+<pre class="highlight"><code class="language-puppet">package { 'cowsay':
+    ensure   =&gt; present,
+    provider =&gt; gem,
+}</code></pre>
+
+<pre class="highlight"><code class="language-shell execute">cowsay -f bud-frogs "Elementary, my dear Watson"</code></pre>
+<div class="notes-section notes">
+<ul>
+<li>This requires admin privileges to configure nodes.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="Overview_root" class="slide " data-transition="none">
+<div class="content " ref="Overview/root">
+<h1>This means <code>root</code>...</h1>
+<h2>on <em>all</em> your nodes.</h2>
+<p><img src="./file//_images/root.jpg" alt="Root all the things!"></p>
+</div>
+</div>
+<div id="Overview_good_thing" class="slide " data-transition="none">
+<div class="content " ref="Overview/good_thing">
+<h1>Which is actually a good thing</h1>
+<h2>Sensitive files readable only by root.</h2>
+<ul>
+<li>I'm going to tell you some scary things today.</li>
+<li>But it's not quite as bad as it seems.</li>
+<li>So don't run screaming for the hills just yet!</li>
+</ul>
+<p><img src="./file//_images/squiggle-face.jpg" alt="Squiggle face"></p>
+</div>
+</div>
+<div id="Secrets_Section" class="slide center subsection" data-transition="none">
+<div class="content center subsection" ref="Secrets/Section">
+<h1>Secrets in your catalog</h1>
+</div>
+</div>
+<div id="Secrets_wp_profile" class="slide " data-transition="none">
+<div class="content " ref="Secrets/wp_profile">
+<h1>Some code</h1>
+<pre class="highlight"><code class="language-puppet">class profile::wordpress {
+    include profile::apache
+    apache::vhost { $::fqdn:
+        port     =&gt; '80',
+        docroot  =&gt; '/opt/wordpress',
+    }
+
+    class { 'profile::mysql::server':
+        root_password =&gt; 'PrVVX2pq*8rkd',
+    }
+
+    class { '::wordpress':
+      db_user     =&gt; 'wordpress',
+      db_password =&gt; 'pwd{94wqUDde',
+    }
+}</code></pre>
+</div>
+</div>
+<div id="Secrets_in_catalog_quiz" class="slide form=secrets" data-transition="none">
+<div class="content form=secrets" ref="Secrets/in_catalog_quiz">
+<form id="secrets" action="/form/secrets" method="POST">
+<h1>Where will you find secrets?</h1>
+<p>Enforce the configuration:</p>
+<pre class="highlight"><code class="language-shell execute">ssh root@demo puppet agent -t</code></pre>
+<div class="form element " id="secrets_secrets" data-name="secrets">
+<label for="secrets_secrets">Where do you think copies of these secrets might exist?</label><ul>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_puppetdb" value="puppetdb" class="correct"><label for="secrets_secrets_puppetdb" class="correct">Information stored in PuppetDB</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_console" value="console" class="correct"><label for="secrets_secrets_console" class="correct">Directly in the PE Console</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_catalog_master" value="catalog_master" class=""><label for="secrets_secrets_catalog_master" class="">A copy of the catalog cached on the master</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_catalog_agent" value="catalog_agent" class="correct"><label for="secrets_secrets_catalog_agent" class="correct">A copy of the catalog cached on the agent</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_filebucket" value="filebucket" class="correct"><label for="secrets_secrets_filebucket" class="correct">Changed files backed up on the master.</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_report_master" value="report_master" class="correct"><label for="secrets_secrets_report_master" class="correct">A copy of the report cached on the master</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_report_agent" value="report_agent" class="correct"><label for="secrets_secrets_report_agent" class="correct">A copy of the report cached on the agent</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_syslog_master" value="syslog_master" class=""><label for="secrets_secrets_syslog_master" class="">syslog on the master</label>
+</li>
+<li>
+<input type="checkbox" name="secrets[]" id="secrets_secrets_syslog_agent" value="syslog_agent" class="correct"><label for="secrets_secrets_syslog_agent" class="correct">syslog on the agent</label>
+</li>
+</ul>
+</div>
+<div class="notes-section notes">
+<div class="form wrapper" title="secrets"></div>
+</div>
+<div class="tools">
+<input type="button" class="display" value="Display Results"><input type="submit" value="Save" disabled>
+</div>
+</form>
+</div>
+</div>
+<div id="Secrets_artifacts_master" class="slide " data-transition="none">
+<div class="content " ref="Secrets/artifacts_master">
+<h1>Artifacts on the Master</h1>
+<h2>Filebucketed file backups.</h2>
+<pre class="highlight"><code class="language-shell execute">ssh root@master puppet bucket grep PrVVX
+say wat</code></pre>
+<p><img src="./file//_images/bucket_face.jpg" alt="Bucket Face"></p>
+<ul>
+<li>This uses the <code>dhgwilliam/bucket_face</code> Forge module.</li>
+</ul>
+<p class="callout info">The centralized <code>filebucket</code> service is disabled by default in
+recent PE releases, but the same service is used by the new <em>static compiler</em>
+option, in which case all managed files exist in the filebucket store.</p>
+<div class="notes-section notes">
+<p>
+You could get similar results by just grepping the <code>filebucket</code> directory.</p>
+<pre class="highlight"><code class="language-shell">root@master:~ # cd /opt/puppetlabs/server/data/puppetserver/bucket
+root@master:/opt/puppetlabs/server/data/puppetserver/bucket # grep -rn PrVVX *
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:6:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:12:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:18:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:24:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:30:password='PrVVX2pq*8rkd'</code></pre>
+</div>
+<div class="notes-section handouts">
+<p>
+Results:</p>
+<pre class="highlight"><code class="language-shell">d522269bdb72bf2769da20ea563b2103	2016-05-01 09:27	/root/.my.cnf:
+	password='PrVVX2pq*8rkd'
+	password='PrVVX2pq*8rkd'
+	password='PrVVX2pq*8rkd'
+	password='PrVVX2pq*8rkd'
+	password='PrVVX2pq*8rkd'</code></pre>
+<p>You could get similar results by just grepping the <code>filebucket</code> directory.</p>
+<pre class="highlight"><code class="language-shell">root@master:~ # cd /opt/puppetlabs/server/data/puppetserver/bucket
+root@master:/opt/puppetlabs/server/data/puppetserver/bucket # grep -rn PrVVX *
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:6:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:12:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:18:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:24:password='PrVVX2pq*8rkd'
+d/5/2/2/2/6/9/b/d522269bdb72bf2769da20ea563b2103/contents:30:password='PrVVX2pq*8rkd'</code></pre>
+</div>
+</div>
+</div>
+<div id="Secrets_artifacts_agent" class="slide " data-transition="none">
+<div class="content " ref="Secrets/artifacts_agent">
+<h1>Artifacts on the Agent</h1>
+<h2>Cached Catalog.</h2>
+<pre class="highlight"><code class="language-shell code_wrap execute">ssh root@demo 'python -m json.tool $(puppet agent --configprint client_datadir)/catalog/demo.puppetlabs.vm.json | grep -n2 PrVVX'
+say wat</code></pre>
+<ul>
+<li>The Puppet Agent will cache the latest catalog on disk every time it runs.</li>
+<li>This allows it to maintain state if the Master isn't reachable.</li>
+</ul>
+<p><img src="./file//_images/provision_configure_puppet.png" alt="state"></p>
+<div class="notes-section handouts">
+<p>
+Results:</p>
+<pre class="highlight"><code class="language-shell code_wrap">4545-            \"line\": 8,
+4546-            \"parameters\": {
+4547:                \"root_password\": \"PrVVX2pq*8rkd\"
+4548-            },
+4549-            \"tags\": [
+--
+4601-                \"restart\": false,
+4602-                \"root_group\": \"root\",
+4603:                \"root_password\": \"PrVVX2pq*8rkd\",
+4604-                \"service_enabled\": true,
+4605-                \"service_manage\": true,
+--
+5011-            \"parameters\": {
+5012-                \"backup\": false,
+5013:                \"content\": \"### MANAGED BY PUPPET ###\n\n\n[mysql]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[client]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqldump]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqladmin]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqlcheck]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n\",
+5014-                \"mode\": \"0600\",
+5015-                \"owner\": \"root\",</code></pre>
+</div>
+</div>
+</div>
+<div id="Secrets_artifacts_puppetdb" class="slide " data-transition="none">
+<div class="content " ref="Secrets/artifacts_puppetdb">
+<h1>Artifacts in PuppetDB</h1>
+<h2>Stored Catalogs.</h2>
+<pre class="highlight"><code class="language-shell execute"># OS X doesn't do .pem anymore, since OpenSSL has been deprecated
+CERT=_files/ssl/cert.p12:boo
+CA=_files/ssl/certs/ca.pem
+SSL="--tlsv1 --cacert ${CA} --cert ${CERT}"
+
+PDB=https://master.puppetlabs.vm:8081/pdb/query/v4/catalogs/
+URL="${PDB}/demo.puppetlabs.vm"
+
+curl ${URL} ${SSL} | python -m json.tool | grep PrVVX
+say wat</code></pre>
+
+<ul>
+<li>PuppetDB stores the latest catalog for each node.</li>
+<li>Any whitelisted nodes can access them.
+<ul>
+<li>Only Master by default.</li>
+<li>Often opened up for infrastructure discovery purposes.</li>
+</ul>
+</li>
+</ul>
+<div class="notes-section notes">
+<ul>
+<li>Provisioning</li>
+<li>puppetdbquery</li>
+<li>etc</li>
+</ul>
+</div>
+<div class="notes-section handouts">
+<p>
+Results:</p>
+<pre class="highlight"><code class="language-shell code_wrap">"root_password": "PrVVX2pq*8rkd",
+"root_password": "PrVVX2pq*8rkd"
+"content": "### MANAGED BY PUPPET ###\n\n\n[mysql]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[client]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqldump]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqladmin]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n[mysqlcheck]\nuser=root\nhost=localhost\npassword='PrVVX2pq*8rkd'\nsocket=/var/lib/mysql/mysql.sock\n\n",</code></pre>
+</div>
+</div>
+</div>
+<div id="Secrets_artifacts_logs" class="slide " data-transition="none">
+<div class="content " ref="Secrets/artifacts_logs">
+<h1>Artifacts in Logs</h1>
+<h2>The evils of <code>show_diff</code>.</h2>
+<ul>
+<li>The <code>show_diff</code> setting will allow you to see all file changes Puppet makes.</li>
+<li>It also means that any secret managed by Puppet is no longer secret.</li>
+</ul>
+
+<pre class="highlight"><code class="language-shell code_wrap execute">ssh root@demo "puppet apply -e 'include demo::diffs' --show_diff"
+say wat</code></pre>
+</div>
+</div>
+<div id="Secrets_artifacts_logs2" class="slide " data-transition="none">
+<div class="content " ref="Secrets/artifacts_logs2">
+<h1>Artifacts in Logs</h1>
+<h2>The evils of <code>show_diff</code>.</h2>
+<p><img src="./file//_images/show_diff.jpg" alt=".float_right show_diff leaking"></p>
+<ul>
+<li>These diffs can be <em>anywhere</em> reports go.
+<ul>
+<li>syslog</li>
+<li>interactive terminal output</li>
+<li>PE Console</li>
+<li>report processors</li>
+<li>etc</li>
+</ul>
+</li>
+</ul>
+
+<pre class="highlight"><code class="language-shell code_wrap execute">ssh root@demo "puppet apply -e 'include demo::reset'"</code></pre>
+</div>
+</div>
+<div id="Secrets_summary" class="slide " data-transition="none">
+<div class="content " ref="Secrets/summary">
+<h1>To sum it up:</h1>
+<h2>Puppet catalogs do not keep secrets very well.</h2>
+<p><img src="./file//_images/information.gif" alt="too much information"></p>
+</div>
+</div>
+<div id="Bootstrapping_Section" class="slide center subsection" data-transition="none">
+<div class="content center subsection" ref="Bootstrapping/Section">
+<h1>The Bootstrapping Problem</h1>
+</div>
+</div>
+<div id="Bootstrapping_start_somewhere" class="slide " data-transition="none">
+<div class="content " ref="Bootstrapping/start_somewhere">
+<h1>But you have to start somewhere</h1>
+<h2>If not Puppet, then what else?</h2>
+<ul>
+<li>Something has to configure secrets.
+<ul>
+<li>Preseed secrets during provisioning.</li>
+<li>Manually SCP certificates.</li>
+<li>Secrets manager.</li>
+</ul>
+</li>
+<li>No matter how many locks you have, something has to unlock!</li>
+</ul>
+<p><img src="./file//_images/locks.jpg" alt="many locks"></p>
+<div class="notes-section notes">
+<ul>
+<li>Conjur</li>
+<li>Vault</li>
+<li>etc</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="Bootstrapping_bootstrapping" class="slide " data-transition="none">
+<div class="content " ref="Bootstrapping/bootstrapping">
+<h1>Something must be plain-text</h1>
+<h2>Known as the bootstrap problem.</h2>
+<p><img src="./file//_images/boots.jpg" alt="Boots"></p>
+<div class="notes-section notes">
+<p>
+End-to-end security is hard. And even when it's possible to achieve, it's often
+quite inconvenient to the end-user.</p>
+<p>We'll come back to this in a few. Puppet's already done some bootstrapping, remember?
+</p>
+</div>
+</div>
+</div>
+<div id="Bootstrapping_ssl_website" class="slide " data-transition="none">
+<div class="content " ref="Bootstrapping/ssl_website">
+<h1>Convenience vs. Security</h1>
+<h2>It's often very much a trade-off.</h2>
+<ul>
+<li>How many of us remember configuring our first SSL site?
+<ul>
+<li>It's gonna be so secure!</li>
+<li>Got me a certificate, yeah...</li>
+<li>Wait, I have to type in a password during bootup?</li>
+<li>https://www.google.com/search?q=set+up+apache+ssl+certificate+dont+ask+password</li>
+</ul>
+</li>
+</ul>
+<p><img src="./file//_images/mod_ssl.jpg" alt="mod_ssl"></p>
+<div class="notes-section notes">
+<p>
+It's no real surprise that the top hit for that Google search explains how to
+use <code>SSLPassPhraseDialog</code> to save the passphrase in a plain-text script.</p>
+<p>Most certificate providers these days will sell you a non-encrypted certificate
+that does not require a passphrase to use it.
+</p>
+</div>
+</div>
+</div>
+<div id="Bootstrapping_summary" class="slide " data-transition="none">
+<div class="content " ref="Bootstrapping/summary">
+<h1>Something's got to have the keys.</h1>
+<h2>It might as well be Puppet.</h2>
+<ul>
+<li>Alternatives aren't really all that more secure.</li>
+<li>Improved security is often at odds with usability.</li>
+<li>But we can do things to make it better.</li>
+</ul>
+<p><img src="./file//_images/pig.jpg" alt="That'll do, Pig"></p>
+<div class="notes-section notes"><p>
+And remember: sensitive Puppet files are admin-only readable by default.
+</p></div>
+</div>
+</div>
+<div id="Scrubbing_Section" class="slide center subsection" data-transition="none">
+<div class="content center subsection" ref="Scrubbing/Section">
+<h1>Mitigation &amp; Scrubbing Secrets</h1>
+</div>
+</div>
+<div id="Scrubbing_fortress" class="slide " data-transition="none">
+<div class="content " ref="Scrubbing/fortress">
+<h1>Keys to the Kingdom</h1>
+<h2>Master is most trusted node in your infrastructure.</h2>
+<ul>
+<li>Even without secrets in filebucket backups.</li>
+<li>Codebase has direct control over every managed node.</li>
+<li><strong>Protect your master.</strong></li>
+</ul>
+<p><img src="./file//_images/fortress.jpg" alt="Impenetrable fortress"></p>
+</div>
+</div>
+<div id="Scrubbing_master" class="slide " data-transition="none">
+<div class="content " ref="Scrubbing/master">
+<h1>Some Recommendations</h1>
+<h2>Non-exhaustive suggestions for securing your Master.</h2>
+<ul>
+<li>Strongest firewall protections.
+<ul>
+<li>Block inbound connections from outside your network.</li>
+</ul>
+</li>
+<li>Login protections:
+<ul>
+<li>disallow root login.</li>
+<li>disallow passwords.</li>
+<li>two factor authentication.</li>
+</ul>
+</li>
+<li>Consider disabling login entirely.
+<ul>
+<li>Automated management only.</li>
+<li>Any time you log in, it should be ticketed and logged.</li>
+</ul>
+</li>
+<li>Monitor and notify on unexpected changes.
+<ul>
+<li>Fine tune to avoid noise drowning out important notifications.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="Scrubbing_postrun" class="slide " data-transition="none">
+<div class="content " ref="Scrubbing/postrun">
+<h1>Scrubbing Node Catalogs</h1>
+<h2>Getting rid of the evidence.</h2>
+<ul>
+<li>Somewhat common to remove catalog from disk after running.</li>
+</ul>
+
+<pre class="highlight"><code class="language-ini"># /etc/puppetlabs/puppet/puppet.conf
+[agent]
+    postrun_command = rm $client_datadir/catalog/$certname.json
+...</code></pre>
+<ul>
+<li>Drawbacks:
+<ul>
+<li>Cannot use cached catalog for failsafe if Master is unavailable.</li>
+<li>Cannot reduce load on Master by using cached catalog.</li>
+<li>Cannot use Direct Puppet.</li>
+<li>Cannot use for troubleshooting.</li>
+</ul>
+</li>
+</ul>
+<div class="notes-section handouts">
+<p>
+Remember if needed, you can retrieve the value of any Puppet setting using <code>--configprint</code>:</p>
+<ul>
+<li><code>$(puppet agent --configprint client_datadir)</code></li>
+<li><code>$(puppet agent --configprint certname)</code></li>
+</ul>
+<p>https://docs.puppet.com/puppet/latest/reference/configuration.html#postruncommand</p>
+</div>
+</div>
+</div>
+<div id="Scrubbing_features" class="slide " data-transition="none">
+<div class="content " ref="Scrubbing/features">
+<h1>Security Implications</h1>
+<h2>Disable features as appropriate.</h2>
+<ul>
+<li>
+<code>filebucket</code>
+<ul>
+<li>Disabled by default in recent PE releases.</li>
+<li>But now used for static catalogs.</li>
+<li>Impact of disabling:
+<ul>
+<li>Cannot restore changed files.</li>
+<li>Cannot use static catalogs.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>show_diff</code>
+<ul>
+<li>Disabled by default.</li>
+<li>Can be disabled per-file resource.</li>
+<li>Impact of disabling:
+<ul>
+<li>Less visibility into changes.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="notes-section handouts"><p>
+I don't actually recommend avoiding filebucket, if you find it useful. The Master
+should be highly secure, so this isn't any worse than having your codebase on disk.
+</p></div>
+</div>
+</div>
+<div id="Scrubbing_show_diff" class="slide " data-transition="none">
+<div class="content " ref="Scrubbing/show_diff">
+<h1>Disabling <code>show_diff</code> for sensitive files</h1>
+<pre class="highlight"><code class="language-puppet">file { '/etc/motd':
+  ensure  =&gt; file,
+  content =&gt; "changes!!1!\n",
+}
+file { '/etc/something_secret':
+  ensure    =&gt; file,
+  content   =&gt; 'hunter2',
+  show_diff =&gt; false,
+}</code></pre>
+
+<pre class="highlight"><code class="language-puppet_output">root@demo:~ # puppet apply files.pp
+Notice: Compiled catalog for demo.puppetlabs.vm in environment production in 0.09 seconds
+Notice: /Stage[main]/Main/File[/etc/motd]/content:
+--- /etc/motd	2016-04-30 15:23:25.016930682 +0000
++++ /tmp/puppet-file20160430-32415-x8gei	2016-04-30 20:23:00.596929656 +0000
+@@ -1 +1 @@
+-wut wut
++changes!!1!
+Notice: /Stage[main]/Main/File[/etc/motd]/content: content changed '{md5}ec1dc85fc50a40805611f8e0b2413dda' to '{md5}ad3453fe26ac24cbccd3e76cb51a9c51'
+Notice: Applied catalog in 0.28 seconds</code></pre>
+</div>
+</div>
+<div id="Node_Encrypt_Section" class="slide center subsection" data-transition="none">
+<div class="content center subsection" ref="Node_Encrypt/Section">
+<h1>Keeping secrets out of your catalog</h1>
+</div>
+</div>
+<div id="Node_Encrypt_puppetca1" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/puppetca:1">
+<h1>Remember the bootstrapping problem?</h1>
+<h2>Puppet's already done some bootstrapping...</h2>
+<ul>
+<li>The first thing you do when standing up a new node is sign its certificate!
+<ul>
+<li>After checking the signature, right?</li>
+</ul>
+</li>
+<li>Hmmm... time for the hard questions.</li>
+</ul>
+</div>
+</div>
+<div id="Node_Encrypt_puppetca2" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/puppetca:2">
+<h1>Remember the bootstrapping problem?</h1>
+<h2>Puppet's already done some bootstrapping...</h2>
+<ul>
+<li>The first thing you do when standing up a new node is sign its certificate!
+<ul>
+<li>After checking the signature, right?</li>
+</ul>
+</li>
+<li>Hmmm... time for the hard questions.</li>
+</ul>
+<p><img src="./file//_images/philosoraptor-morgan-freeman.png" alt="philosoraptor"></p>
+</div>
+</div>
+<div id="Node_Encrypt_introduction" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/introduction">
+<h1>Existing CA Infrastructure</h1>
+<h2>Why can't we just use it?</h2>
+<ul>
+<li>Introducing <code>binford2k/node_encrypt</code>
+</li>
+<li>Encrypts data in the catalog for each node.</li>
+<li>Mostly transparent with little-to-no configuration.</li>
+</ul>
+
+<pre class="highlight"><code class="language-json">{
+  "type": "Node_encrypted_file",
+  "title": "/var/www/sites/default/sites.php",
+  "tags": ["node_encrypted_file", "node_encrypt::file", "node_encrypt", "file", "node", "default", "class"],
+  "file": "/etc/puppetlabs/code/environments/production/modules/node_encrypt/manifests/file.pp",
+  "line": 66,
+  "exported": false,
+  "parameters": {
+    "content": "-----BEGIN PKCS7-----
+MIIMlQYJKoZIhvcNAQcDoIIMhjCCDIICAQAxggJ5MIICdQIBADBfMFoxWDBWBgNV
+BAMMT1B1cHBldCBDQSBnZW5lcmF0ZWQgb24gcHVwcGV0ZmFjdG9yeS5wdXBwZXRs
+YWJzLnZtIGF0IDIwMTUtMTItMTEgMDE6MTk6MzYgKzAwMDACAQIwCwYJKoZIhvcN
+AQEBBIICADGhLbgBfodWjA6S+rzNfkTNLP+aGkwjGXQH5vSGpBm/z5bg+18+1vCZ
++L+wrsE8P/5ZGuK9sXXV//IKcuu2Shn+rkW32/kqPVab4yNnWZUjaqbdGdnEI46F
+6N44XQWOxbu7nTg9yCaUTdrDhVNtdYl+YrCDQiMsUjsJ+no78/y7IYqbWuwN70hx
+OdqYSvZ2Fkww2nqiRBpSWXvja6ONw3025vywBT1WNEDPNYEL+mPSq17gC9yDpr+I
+409+g/uD/j8q5YtABpf4d9CVhsDy/5E3T9O28ruR/Ow4lA2EDGsyu7tYKAMiYNU6
+XjEkyiqRNNTil49T73cyZGloPtBevHOREee/DE/u9oZw+aMQS3o4TCA+ubRSuRKF
+kgSgathI4gC/C2E57GBQfreuSi4umKTF/kKYfaGoj6zba/nwSU/8pQqYT86M7pP9
+4HRy9S1tlcjAuXKFffB+P52Bdz2Dv7uc4s5sJfkvIR1T0dgtiUl+X8HWsDWJ3cYJ
+t5+TpqDLkjREVis/vuG3+mX2XgeQvNkGucTAuB9iS0XLZINYnIBE04fPGezi36V3
+VJm4rnOa2AIVc1MbT7khkRaKbO1MXSqGHTyv2zbLTwfQFpRPdzW/fouxxVcZoA5w
+HLHacKMRYxCQnFwbVlrgO2cWhH89UM6dFlX4nkA3m6vW65+/yWA4MIIJ/gYJKoZI
+hvcNAQcBMB0GCWCGSAFlAwQBBAQQt4G22wVoZW9HXytCTJ68+YCCCdAbEe+ytJM9
+m59oGAX8//I6Py4DaGL8ECN0yfP3MBVxZ0pISKqGaKLxYdsXRU6HBQx895/9Z0Qh
+jB86siqv+iXEMoPLpKM90RfUNzyT275Ua/SHRn8DCLTHMj+SvHTpKUe7bv+WPXMV
+...</code></pre>
+<div class="notes-section notes">
+<ul>
+<li>https://forge.puppet.com/binford2k/node_encrypt</li>
+</ul>
+</div>
+<div class="notes-section handouts">
+<ul>
+<li>https://forge.puppet.com/binford2k/node_encrypt</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="Node_Encrypt_features" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/features">
+<h1>Features of the module</h1>
+<h2>Transparent &amp; targeted encryption.</h2>
+<ul>
+<li>Uses each nodes <em>public key</em> to encrypt data in the catalog.
+<ul>
+<li>Each node can decrypt only <em>its own</em> data.</li>
+</ul>
+</li>
+</ul>
+
+<p><img src="./file//_images/public_key_encryption.gif" alt="Public key crypto"></p>
+<ul>
+<li>Encrypted wrapper for native <code>file</code> type.</li>
+<li>Puppet subcommands for encrypting/decrypting data.</li>
+<li>Compiler functions to:
+<ul>
+<li>Generate encrypted data during compilation.</li>
+<li>Remove a secret parameter from the catalog.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="Node_Encrypt_encrypted_file" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/encrypted_file">
+<h1>Manage secrets in files</h1>
+<h2>Using the <code>node_encrypt::file</code> resource type.</h2>
+<ul>
+<li>Just replace <code>file</code> resources:</li>
+</ul>
+
+<pre class="highlight"><code class="language-puppet">#file { '/tmp/foo':
+#  owner   =&gt; 'root',
+#  group   =&gt; 'root',
+#  content =&gt; 'This string WOULD BE in the catalog.',
+#}
+
+# Port to secure file wrapper.
+node_encrypt::file { '/tmp/foo':
+  owner   =&gt; 'root',
+  group   =&gt; 'root',
+  content =&gt; 'This string will never appear in the catalog.',
+}</code></pre>
+<p class="callout warning">Secure content is encrypted in the catalog, and is scrubbed
+from reports and file diffs. However, it will still appear in backed up files.</p>
+</div>
+</div>
+<div id="Node_Encrypt_file_demo" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/file_demo">
+<h1>Manage secrets in files</h1>
+<h2>Using the <code>node_encrypt::file</code> resource type.</h2>
+<p>Set up by causing a divergence:</p>
+<pre class="highlight"><code class="language-shell execute">ssh root@demo "echo changes &gt; /tmp/foo"</code></pre>
+
+<pre class="highlight"><code class="language-shell execute">ssh root@demo puppet agent -t</code></pre>
+
+<pre class="highlight"><code class="language-shell code_wrap execute">ssh root@demo 'python -m json.tool $(puppet agent --configprint client_datadir)/catalog/demo.puppetlabs.vm.json | grep -n2 "will never appear"'
+say wahoo</code></pre>
+
+<pre class="highlight"><code class="language-shell execute">ssh root@demo cat /tmp/foo</code></pre>
+<div class="notes-section handouts">
+<p>
+Results:</p>
+<pre class="highlight"><code class="language-shell code_wrap">root@demo:~ # puppet agent -t
+Info: Using configured environment 'production'
+Info: Retrieving pluginfacts
+Info: Retrieving plugin
+Info: Loading facts
+Info: Caching catalog for demo.puppetlabs.vm
+Info: Applying configuration version '1462176716'
+Notice: /Stage[main]/Main/Node[demo.puppetlabs.vm]/Node_encrypt::File[/tmp/foo]/Node_encrypted_file[/tmp/foo]/content: content changed '&lt;&lt;encrypted&gt;&gt;' to '&lt;&lt;encrypted&gt;&gt;'
+Notice: Applied catalog in 1.39 seconds</code></pre>
+</div>
+</div>
+</div>
+<div id="Node_Encrypt_encrypted_exec" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/encrypted_exec">
+<h1>Encrypting arguments for commands</h1>
+<h2>A little more convoluted.</h2>
+<ul>
+<li>Sometimes you must run commands with secrets.</li>
+<li>Use the <code>puppet node decrypt</code> command.</li>
+<li>Pass the secret as an environment variable.</li>
+<li>Note the careful use of single quotes to prevent variable expansion.</li>
+</ul>
+
+<pre class="highlight"><code class="language-puppet code_wrap">exec { 'set service passphrase':
+  command     =&gt; 'some-service --set-passphrase="$(puppet node decrypt --env SECRET)"',
+  path        =&gt; '/opt/puppetlabs/bin:/usr/bin',
+  environment =&gt; "SECRET=${node_encrypt('and your father smelt of elderberries')}",
+}</code></pre>
+</div>
+</div>
+<div id="Node_Encrypt_exec_demo" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/exec_demo">
+<h1>Manage secrets in <code>exec</code> resources.</h1>
+<h2>Using the <code>puppet node decrypt</code> command.</h2>
+<p>See the environment variable:</p>
+<pre class="highlight"><code class="language-shell execute">ssh root@demo 'echo $SECRET'</code></pre>
+<p>See the decrypted text:</p>
+<pre class="highlight"><code class="language-shell execute">ssh root@demo puppet node decrypt --env SECRET</code></pre>
+<p>Encrypt some text on the Master:</p>
+<pre class="highlight"><code class="language-shell code_wrap execute">ssh root@master 'puppet node encrypt -t demo.puppetlabs.vm "and your father smelt of elderberries"'</code></pre>
+<div class="notes-section handouts">
+<p>
+Results:</p>
+<pre class="highlight"><code class="language-shell code_wrap">root@demo:~ # echo $SECRET
+-----BEGIN PKCS7----- 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 zuiTIT+leFdYCcoDOIy4yg== -----END PKCS7-----
+root@demo:~ # puppet node decrypt --env SECRET
+and your father smelt of elderberries</code></pre>
+
+<pre class="highlight"><code class="language-shell code_wrap">root@master:~ # puppet node encrypt -t demo.puppetlabs.vm 'and your father smelt of elderberries'
+-----BEGIN PKCS7-----
+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
+zuiTIT+leFdYCcoDOIy4yg==
+-----END PKCS7-----</code></pre>
+</div>
+</div>
+</div>
+<div id="Node_Encrypt_redact" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/redact">
+<h1>Something else you probably didn't know</h1>
+<h2>Class parameters are recorded in the catalog too.</h2>
+<p><img src="./file//_images/sad_cat.jpg" alt="Grumpy cat"></p>
+</div>
+</div>
+<div id="Node_Encrypt_redact_function" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/redact_function">
+<h1>I've got you covered.</h1>
+<h2>Redact class parameters from the catalog..</h2>
+<ul>
+<li>Used by the class author for transparency.</li>
+</ul>
+
+<pre class="highlight"><code class="language-puppet">class secret ($password) {
+  $encrypted = node_encrypt($password)
+
+  file { '/etc/something/or/other.conf':
+    ensure  =&gt; file,
+    owner   =&gt; 'root',
+    group   =&gt; 'root',
+    mode    =&gt; '0644',
+    content =&gt; "password = ${encrypted}",
+  }
+
+  redact('password')
+
+  # could be called with the optional second parameter
+  # redact('password', 'The password has been redacted')
+}</code></pre>
+</div>
+</div>
+<div id="Node_Encrypt_redact_demo" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/redact_demo">
+<h1>Manage secrets in <code>exec</code> resources.</h1>
+<h2>Using the <code>puppet node decrypt</code> command.</h2>
+<p>Code on the master:</p>
+<pre class="highlight"><code class="language-puppet">class { 'secret':
+    password =&gt; 'your mother was a hamster',
+}</code></pre>
+<p>Enforce it:</p>
+<pre class="highlight"><code class="language-shell execute">ssh root@demo puppet agent -t</code></pre>
+<p>Look at the catalog:</p>
+<pre class="highlight"><code class="language-shell code_wrap execute">ssh root@demo 'python -m json.tool $(puppet agent --configprint client_datadir)/catalog/demo.puppetlabs.vm.json | grep -B9 "title.*Secret"'
+say wahoo</code></pre>
+<div class="notes-section handouts">
+<p>
+Results:</p>
+<pre class="highlight"><code class="language-shell">"parameters": {
+    "password": "&lt;&lt;redacted&gt;&gt;"
+},
+"tags": [
+    "class",
+    "secret",
+    "node",
+    "demo.puppetlabs.vm"
+],
+"title": "Secret",</code></pre>
+</div>
+</div>
+</div>
+<div id="Node_Encrypt_limitations" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/limitations">
+<h1>Every tool has its limitations</h1>
+<h2>This is no exception.</h2>
+<ul>
+<li>This will not prevent files with secrets from being backed up to filebucket.
+<ul>
+<li>But it will do the right thing with files in static catalogs.</li>
+</ul>
+</li>
+<li>It renders <code>show-diff</code> useless.</li>
+<li>Secrets can be encrypted for a single node only.</li>
+<li>The master must have access to all nodes' public keys.
+<ul>
+<li>Includes a class for distributing to compile masters.</li>
+</ul>
+</li>
+<li>This <strong>does not</strong> protect secrets in your codebase or Hiera datasources.</li>
+</ul>
+</div>
+</div>
+<div id="Node_Encrypt_certificates" class="slide " data-transition="none">
+<div class="content " ref="Node_Encrypt/certificates">
+<h1>What about Compile Masters?</h1>
+<h2>Must have access to each node's public key.</h2>
+<ul>
+<li>Must have a node's public key to encrypt for it.</li>
+<li>The CA has all public keys, but compile masters don't.</li>
+<li>Classify all masters with <code>node_encrypt::certificates</code>.</li>
+<li>Automatically distributes all public keys to all compile masters.</li>
+</ul>
+
+<pre class="highlight"><code class="language-puppet"># configure mountpoint for cert distribution
+node /mom.example.com/ {
+    include node_encrypt::certificates
+}
+
+# sync all public certificates
+node /compile\d\d.example.com/ {
+    include node_encrypt::certificates
+}</code></pre>
+</div>
+</div>
+<div id="Hiera_eYaml_Section" class="slide center subsection" data-transition="none">
+<div class="content center subsection" ref="Hiera_eYaml/Section">
+<h1>Secrets on Disk</h1>
+</div>
+</div>
+<div id="Hiera_eYaml_on_disk" class="slide " data-transition="none">
+<div class="content " ref="Hiera_eYaml/on_disk">
+<h1>What about on-disk?</h1>
+<h2>Keeping secrets out of your codebase.</h2>
+<ul>
+<li>We've talked about:
+<ul>
+<li>keeping secrets out of the catalog.</li>
+<li>keeping secret files out of the filebucket.</li>
+<li>keeping secrets out of reports.</li>
+</ul>
+</li>
+<li>What about the codebase on disk?</li>
+</ul>
+<p><img src="./file//_images/locked_disk.png" alt="locked disk"></p>
+</div>
+</div>
+<div id="Hiera_eYaml_introduction" class="slide " data-transition="none">
+<div class="content " ref="Hiera_eYaml/introduction">
+<h1>Hiera eYaml</h1>
+<h2>Protects secrets in Hiera datasources.</h2>
+<ul>
+<li>Tooling for encrypting individual values in datasources.</li>
+<li>Hiera backend for transparently decrypting.</li>
+</ul>
+
+<pre class="highlight"><code class="language-puppet">class { 'secret':
+    password =&gt; hiera('password'),
+}</code></pre>
+<p>Datasource:</p>
+<pre class="highlight"><code class="language-yaml">---
+plain-property: You can see me
+password: &gt;
+    ENC[PKCS7,Y22exl+OvjDe+drmik2XEeD3VQtl1uZJXFFF2NnrMXDWx0csyqLB/2NOWefv
+    NBTZfOlPvMlAesyr4bUY4I5XeVbVk38XKxeriH69EFAD4CahIZlC8lkE/uDh
+    jJGQfh052eonkungHIcuGKY/5sEbbZl/qufjAtp/ufor15VBJtsXt17tXP4y
+    l5ZP119Fwq8xiREGOL0lVvFYJz2hZc1ppPCNG5lwuLnTekXN/OazNYpf4CMd
+    /HjZFXwcXRtTlzewJLc+/gox2IfByQRhsI/AgogRfYQKocZgFb/DOZoXR7wm
+    IZGeunzwhqfmEtGiqpvJJQ5wVRdzJVpTnANBA5qxeA==]</code></pre>
+</div>
+</div>
+<div id="Hiera_eYaml_configuration" class="slide " data-transition="none">
+<div class="content " ref="Hiera_eYaml/configuration">
+<h1>A little tricky to set up</h1>
+<h2>Uses its own set of certificates.</h2>
+<ol>
+<li>Install for CLI usage:
+<ul>
+<li><code>gem install hiera-eyaml</code></li>
+</ul>
+</li>
+<li>Install for Puppetserver Hiera backend functionality:
+<ul>
+<li><code>puppetserver gem install hiera-eyaml</code></li>
+</ul>
+</li>
+<li>Create encryption keys:
+<ul>
+<li><code>cd $HOME</code></li>
+<li><code>eyaml createkeys</code></li>
+</ul>
+</li>
+<li>Install keys so the Puppet Master can use them
+<ul>
+<li><code>cp -a ~/keys /etc/puppetlabs/puppet/keys</code></li>
+<li><code>chown -R root:pe-puppet /etc/puppetlabs/puppet/keys/</code></li>
+<li><code>chmod 0750 /etc/puppetlabs/puppet/keys/</code></li>
+<li><code>chmod 0640 /etc/puppetlabs/puppet/keys/*.pem</code></li>
+</ul>
+</li>
+<li>Configure your <code>hiera.yaml</code>
+<ul>
+<li>See https://github.com/TomPoulton/hiera-eyaml#setup</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div id="Hiera_eYaml_using" class="slide " data-transition="none">
+<div class="content " ref="Hiera_eYaml/using">
+<h1>Using Hiera eYaml</h1>
+<h2>As easy as editing files!</h2>
+<ol>
+<li>Just edit a <code>*.eyaml</code> file with the <code>edit</code> command.</li>
+<li>Provide encryption markers.
+<ul>
+<li><code>password: DEC::PKCS7[super sekrit password]!</code></li>
+</ul>
+</li>
+<li>There is no step three.</li>
+</ol>
+<p class="callout warning">A slight bug in the <code>eyaml edit</code> command requires your <code>CWD</code> to be
+your home directory where your keys are stored.</p>
+<pre class="highlight"><code class="language-shell code_wrap">root@master:~ # eyaml edit /etc/puppetlabs/code/hieradata/secure.eyaml
+puppet apply -e 'notice(hiera("password"))'
+Notice: Scope(Class[main]): super sekrit password
+Notice: Compiled catalog for master.puppetlabs.vm in environment production in 0.04 seconds
+Notice: Applied catalog in 0.11 seconds</code></pre>
+</div>
+</div>
+<div id="Hiera_eYaml_extending" class="slide " data-transition="none">
+<div class="content " ref="Hiera_eYaml/extending">
+<h1>Extensible Plugin System</h1>
+<h2>Multiple encryption backends.</h2>
+<ul>
+<li>
+<code>hiera-eyaml-gpg</code>
+<ul>
+<li>Provide GPG encryption</li>
+</ul>
+</li>
+<li>
+<code>hiera-eyaml-plaintext</code>
+<ul>
+<li>This is a no-op encryption plugin that simply base64 encodes the values.
+It exists as an example plugin to create your own and to do integration
+tests on hiera-eyaml. THIS SHOULD NOT BE USED IN PRODUCTION</li>
+</ul>
+</li>
+<li>
+<code>hiera-eyaml-twofac</code>
+<ul>
+<li>PKCS7 keypair + AES256 symmetric password for two-factor encryption Note
+that this plugin mandates the user enter a password. It is useful for
+non-automated scenarios, and is not advised to be used in conjunction with
+puppet, as it requires entry of a password over a terminal.</li>
+</ul>
+</li>
+<li>
+<code>hiera-eyaml-kms</code>
+Encryption using AWS Key Management Service (KMS)</li>
+</ul>
+<p>https://github.com/TomPoulton/hiera-eyaml#pluggable-encryption</p>
+</div>
+</div>
+<div id="Hiera_eYaml_common_failures" class="slide " data-transition="none">
+<div class="content " ref="Hiera_eYaml/common_failures">
+<h1>Common Failures</h1>
+<h2>Things to watch out for.</h2>
+<ul>
+<li>Certificates must be readable by the Master.</li>
+<li>Gem must be installed <strong>twice</strong> in different <code>$GEMPATH</code>s.</li>
+<li>The <code>createkeys</code> and <code>edit</code> commands work with keys in <code>$CWD</code>
+</li>
+<li>Upgrading Puppetserver often does not preserve installed gems.</li>
+<li>If you forget the marker text, the value <strong>is not encrypted</strong>.</li>
+</ul>
+<p class="callout warning">Remember that if you ever commit unencrypted data, it can be
+a real bear to scrub. It's best to just discard the secret and regenerate a
+fresh version. See https://help.github.com/articles/remove-sensitive-data for info.</p>
+</div>
+</div>
+<div id="Conclusion_Section" class="slide center subsection" data-transition="none">
+<div class="content center subsection" ref="Conclusion/Section">
+<h1>To wrap it all up...</h1>
+</div>
+</div>
+<div id="Conclusion_summary" class="slide " data-transition="none">
+<div class="content " ref="Conclusion/summary">
+<h1>To wrap it all up</h1>
+<h2>Practical suggestions.</h2>
+<ul>
+<li>Encrypt secrets in your catalogs:
+<ul>
+<li><code>puppet module install binford2/node_encrypt</code></li>
+<li>Start using the type in place of sensitive <code>file</code> resources.</li>
+</ul>
+</li>
+<li>Protect secrets in your codebase.
+<ul>
+<li><code>gem install hiera-eyaml</code></li>
+</ul>
+</li>
+<li>Disable <code>show_diffs</code>.</li>
+<li>Protect the hell out of your Master.</li>
+</ul>
+<p><img src="./file//_images/doberman.jpg" alt="Doberman"></p>
+</div>
+</div>
+<div id="Conclusion_next_steps" class="slide " data-transition="none">
+<div class="content " ref="Conclusion/next_steps">
+<h1>Resources &amp; Next Steps</h1>
+<p><strong>Configuration settings:</strong></p>
+<ul>
+<li>
+<code>show_diff</code>:
+<ul>
+<li>https://docs.puppet.com/puppet/latest/reference/configuration.html#showdiff</li>
+</ul>
+</li>
+<li>
+<code>filebucket</code> type:
+<ul>
+<li>https://docs.puppet.com/puppet/latest/reference/types/filebucket.html</li>
+</ul>
+</li>
+</ul>
+<p><strong>Projects:</strong></p>
+<ul>
+<li>
+<code>binford2k/node_encrypt</code>:
+<ul>
+<li>https://forge.puppet.com/binford2k/node_encrypt</li>
+</ul>
+</li>
+<li>Hiera eYaml:
+<ul>
+<li>https://github.com/TomPoulton/hiera-eyaml</li>
+</ul>
+</li>
+<li>
+<code>puppetdbquery</code>
+<ul>
+<li>https://github.com/dalen/puppet-puppetdbquery</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="Conclusion_end" style="background-image: url('file/_images/yellow-brick-road.jpg');" class="slide center subsection end" data-transition="none">
+<div class="content center subsection end" ref="Conclusion/end">
+<h1>The End!</h1>
+</div>
+</div>
+</div>
+<div id="buttonNav">
+  <div id="buttonPrev"><i class="fa fa-chevron-left fa-lg"></i> Previous</div><div id="buttonNext">Next <i class="fa fa-chevron-right fa-lg"></i></div>
+</div>
+<div id="pauseScreen">
+  PAUSED
+</div>
+
+</body>
+</html>
