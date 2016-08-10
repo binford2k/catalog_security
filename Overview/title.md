@@ -10,11 +10,13 @@
 * [binford2k.com](http://binford2k.com)
 
 ~~~SECTION:notes~~~
-Gratuitous scary hackerrrrr just because. Everyone's got to have this
-oh-so-accurate graphical depiction of security vulnerabilities, right?
+Gratuitous scary hackerrrrr just because.
+
+Everyone's got to have this oh-so-accurate graphical depiction of security vulnerabilities, right?
 ~~~ENDSECTION~~~
 
 ~~~SECTION:handouts~~~
-Everyone's got to have this oh-so-accurate graphical depiction of security
-vulnerabilities, right?
+Gratuitous scary hackerrrrr just because.
+
+Everyone's got to have this oh-so-accurate graphical depiction of security vulnerabilities, right?
 ~~~ENDSECTION~~~
