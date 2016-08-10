@@ -18,5 +18,5 @@
     cowsay -f bud-frogs "Elementary, my dear Watson"
 
 ~~~SECTION:notes~~~
-This requires admin privileges to configure nodes.
+Obviously, it requires admin privileges to configure nodes.
 ~~~ENDSECTION~~~
