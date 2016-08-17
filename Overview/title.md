@@ -1,5 +1,5 @@
 <!SLIDE center cover>
-# Puppet Catalog Security
+# Puppet Catalog Security (change)
 
 ![Hackerrrr](../_images/hackerrrr.jpg)
 
